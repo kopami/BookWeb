@@ -11,8 +11,8 @@ namespace BookWebRazor.DAOs
 {
     public class BaseDAO<T> where T : class
     {
-        protected ApplicationDbContext? _context;
-        internal DbSet<T>? _dbSet;
+        protected ApplicationDbContext _context;
+        internal DbSet<T> _dbSet;
 
         public BaseDAO(ApplicationDbContext context)
         {
@@ -28,6 +28,25 @@ namespace BookWebRazor.DAOs
                 if (entity != null)
                 {
                     _dbSet.Add(entity);
+                    _context.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return result;
+        }
+
+        public bool AddRange(IEnumerable<T> entities)
+        {
+            bool result = false;
+            try
+            {
+                if (entities != null)
+                {
+                    _dbSet.AddRange(entities);
                     _context.SaveChanges();
                     result = true;
                 }

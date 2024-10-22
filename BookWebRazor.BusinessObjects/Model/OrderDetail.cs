@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace BookWebRazor.BusinessObjects.Model
 {
-    public class OrderDetail
+    public class OrderDetail : BaseEntity
     {
-        public int Id { get; set; }
         public int OrderHeaderId { get; set; }
         [ForeignKey("OrderHeaderId")]
         [ValidateNever]

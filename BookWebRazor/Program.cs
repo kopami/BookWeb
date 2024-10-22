@@ -2,6 +2,8 @@ using BookWebRazor.DAOs.Data;
 using BookWebRazor.DAOs.DbInitializer;
 using BookWebRazor.Repositories;
 using BookWebRazor.Repositories.Interface;
+using BookWebRazor.Services;
+using BookWebRazor.Services.Interface;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,7 +39,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 
 builder.Services.AddHttpContextAccessor(); // Required to access HttpContext in the view
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductImageRepository, ProductImageRepository>();
+builder.Services.AddScoped<IOrderHeaderRepository, OrderHeaderRepository>();
+builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 #endregion
 

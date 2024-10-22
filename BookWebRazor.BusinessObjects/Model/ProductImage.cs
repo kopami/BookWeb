@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BookWebRazor.BusinessObjects.Model
 {
-    public class ProductImage
+    public class ProductImage : BaseEntity
     {
-        public int Id { get; set; }
         public string ImageUrl { get; set; } = string.Empty;
         public int ProductId { get; set; }
 

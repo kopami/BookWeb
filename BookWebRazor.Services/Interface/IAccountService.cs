@@ -1,5 +1,4 @@
 ﻿using BookWebRazor.BusinessObjects.Model;
-using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +9,7 @@ namespace BookWebRazor.Services.Interface
 {
     public interface IAccountService
     {
-        public Account? Login(string username, string password, out string message);
+        public Account? Login(string email, string password, out string message);
+        public Account? Register(string email, string password, string? name, out string message);
     }
 }

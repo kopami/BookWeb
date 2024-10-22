@@ -1,4 +1,5 @@
-﻿using BookWebRazor.BusinessObjects.Model;
+﻿using BookWebRazor.BusinessObjects.Enum;
+using BookWebRazor.BusinessObjects.Model;
 using BookWebRazor.Repositories.Interface;
 using BookWebRazor.Services.Interface;
 using System;
@@ -11,31 +12,57 @@ namespace BookWebRazor.Services
 {
     public class AccountService : IAccountService
     {
-        public IAccountRepository _repo { get; set; }
+        private readonly IAccountRepository _accountRepository;
 
-        public AccountService(IAccountRepository repo)
+        public AccountService(IAccountRepository accountRepository)
         {
-            _repo = repo;
+            _accountRepository = accountRepository;
         }
-
         public Account? Login(string email, string password, out string message)
         {
-            var account =  _repo.GetAccount(email);
-
+            var account = _accountRepository.Get(a => a.Email == email);
             if (account == null)
             {
                 message = "Email not found";
             }
-            else if (account.Password != password)
+            else if (!BCrypt.Net.BCrypt.Verify(password, account.Password))
             {
-                message = "Password is incorrect";
+                message = "Invalid Password";
             }
             else
             {
-                message = "Login success";
+                message = "Login successful";
                 return account;
             }
 
+            return null;
+        }
+
+        public Account? Register(string email, string password, string? name, out string message)
+        {
+            var account = _accountRepository.Get(a => a.Email == email);
+            if (account != null)
+            {
+                message = "Email already exists";
+                return null;
+            }
+            // Save the user to the database
+            var newAccount = new Account
+            {
+                Email = email,
+                Password = BCrypt.Net.BCrypt.HashPassword(password),
+                Name = name,
+                Role = RoleEnum.Customer.ToString()
+            };
+            bool isSuccess = _accountRepository.Add(newAccount);
+
+            if (isSuccess)
+            {
+                message = "Registration successful";
+                return newAccount;
+            }
+
+            message = "Registration failed";
             return null;
         }
     }

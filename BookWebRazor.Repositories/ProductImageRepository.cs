@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 
 namespace BookWebRazor.Repositories
 {
-    public class AccountRepository : Repository<Account>, IAccountRepository
+    public class ProductImageRepository : Repository<ProductImage>, IProductImageRepository
     {
-        public AccountRepository() : base(AccountDAO.Instance)
+        public ProductImageRepository() : base(ProductImageDAO.Instance)
         {
-            
         }
-
     }
 }

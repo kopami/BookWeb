@@ -7,12 +7,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using BookWebRazor.BusinessObjects.Model;
 using BookWebRazor.BusinessObjects.Enum;
+using BookWebRazor.Services.Interface;
 
 namespace BookWebRazor.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        private readonly IAccountRepository _accountRepository;
+        private readonly IAccountService _accountService;
         [BindProperty]
         public InputModel Input { get; set; } = new InputModel();
         public string ReturnUrl { get; set; } = string.Empty;
@@ -32,9 +33,9 @@ namespace BookWebRazor.Pages.Account
             public string? Name { get; set; }
         }
 
-        public RegisterModel(IAccountRepository accountRepository)
+        public RegisterModel(IAccountService accountService)
         {
-            _accountRepository = accountRepository;
+            _accountService = accountService;
         }
         public void OnGet(string? returnUrl = null)
         {
@@ -53,33 +54,22 @@ namespace BookWebRazor.Pages.Account
             if (ModelState.IsValid)
             {
                 // Check if the user already exists
-                var existingUser = _accountRepository.GetAccount(Input.Email);
-                if (existingUser != null)
+                var account = _accountService.Register(Input.Email, Input.Password, Input.Name, out string message);
+                if (account == null)
                 {
-                    ModelState.AddModelError(string.Empty, "Email already registered.");
+                    ModelState.AddModelError(string.Empty, message);
                     return Page();
-                }
-
-                // Hash the password
-                var hashedPassword = BCrypt.Net.BCrypt.HashPassword(Input.Password);
-
-                // Save the user to the database
-                var newAccount = new BusinessObjects.Model.Account
-                {
-                    Email = Input.Email,
-                    Password = hashedPassword,
-                    Role = RoleEnum.Customer.ToString() // Default role
-                };
-                _accountRepository.AddAccount(newAccount);
+                }                
 
                 // Automatically log the user in after registration
                 var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, newAccount.Email),
-                new Claim(ClaimTypes.Role, newAccount.Role)
-            };
+                {
+                    new Claim(ClaimTypes.Name, account.Email),
+                    new Claim(ClaimTypes.Role, account.Role)
+                };
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
 
                 return LocalRedirect(returnUrl);

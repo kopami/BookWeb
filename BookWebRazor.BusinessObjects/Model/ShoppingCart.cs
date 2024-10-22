@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace BookWebRazor.BusinessObjects.Model
 {
-    public class ShoppingCart
+    public class ShoppingCart : BaseEntity
     {
-        public int Id { get; set; }
         public int AccountId { get; set; }
 
         [ForeignKey("AccountId")]

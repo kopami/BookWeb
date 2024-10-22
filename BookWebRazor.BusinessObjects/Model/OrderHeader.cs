@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace BookWebRazor.BusinessObjects.Model
 {
-    public class OrderHeader
-    {
-        public int Id { get; set; }
+    public class OrderHeader : BaseEntity
+    {        
         public int AccountId { get; set; }
 
         [ForeignKey("AccountId")]

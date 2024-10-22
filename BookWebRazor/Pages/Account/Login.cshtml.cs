@@ -1,5 +1,6 @@
 using BCrypt.Net;
 using BookWebRazor.Repositories.Interface;
+using BookWebRazor.Services.Interface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -11,16 +12,16 @@ namespace BookWebRazor.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        private readonly IAccountRepository _accountRepository;
+        private readonly IAccountService _accountService;
         [BindProperty]
         public InputModel Input { get; set; } = new InputModel();
         public string ReturnUrl { get; set; } = string.Empty;
         [TempData]
         public string ErrorMessage { get; set; } = string.Empty;
 
-        public LoginModel(IAccountRepository accountRepository)
+        public LoginModel(IAccountService accountService)
         {
-            _accountRepository = accountRepository;
+            _accountService = accountService;
         }
 
         public class InputModel
@@ -49,17 +50,11 @@ namespace BookWebRazor.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var account = _accountRepository.GetAccount(Input.Email);
+                var account = _accountService.Login(Input.Email, Input.Password, out string message);
 
                 if (account == null)
                 {
-                    ModelState.AddModelError(string.Empty, "Email not found.");
-                    return Page();
-                }
-
-                if (!BCrypt.Net.BCrypt.Verify(Input.Password, account.Password))
-                {
-                    ModelState.AddModelError(string.Empty, "Password is incorrect.");
+                    ModelState.AddModelError(string.Empty, message);
                     return Page();
                 }
 

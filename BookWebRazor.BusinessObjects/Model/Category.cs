@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace BookWebRazor.BusinessObjects.Model
 {
-    public class Category
+    public class Category : BaseEntity
     {
         [Key]
-        public int Id { get; set; }
+        public override int Id { get; set; }
         [Required]
         [DisplayName("Category Name")]
         [MaxLength(30)]

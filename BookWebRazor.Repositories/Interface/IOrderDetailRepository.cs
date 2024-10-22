@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookWebRazor.Repositories.Interface
 {
-    public interface IAccountRepository : IRepository<Account>
+    public interface IOrderDetailRepository : IRepository<OrderDetail>
     {
     }
 }

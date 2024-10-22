@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookWebRazor.Repositories.Interface
+namespace BookWebRazor.Services.Interface
 {
-    public interface IAccountRepository : IRepository<Account>
+    public interface ICategoryService
     {
+        IEnumerable<Category> GetAll();
     }
 }

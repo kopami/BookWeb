@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace BookWebRazor.DAOs.DbInitializer
 {
@@ -27,6 +28,7 @@ namespace BookWebRazor.DAOs.DbInitializer
             };
 
             SeedAdminUser();
+            SeedCategory();
         }
 
         private void SeedAdminUser()
@@ -47,6 +49,22 @@ namespace BookWebRazor.DAOs.DbInitializer
                 _dbContext.Account.Add(newAdminUser);
                 _dbContext.SaveChanges();
             }
+        }
+
+        private void SeedCategory()
+        {
+            if (_dbContext.Categories.Any())
+            {
+                return;
+            }
+            var categories = new List<Category>()
+                {
+                    new() { Name = "Action", DisplayOrder = 1 }, //id is auto increment
+                    new() { Name = "SciFic", DisplayOrder = 2 },
+                    new() { Name = "History", DisplayOrder = 3 }
+                };
+            _dbContext.Categories.AddRange(categories);
+            _dbContext.SaveChanges();
         }
     }
 }
