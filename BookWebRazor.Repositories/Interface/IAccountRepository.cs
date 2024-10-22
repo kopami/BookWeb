@@ -10,5 +10,6 @@ namespace BookWebRazor.Repositories.Interface
     public interface IAccountRepository
     {
         public Account? GetAccount(string email);
+        public bool AddAccount(Account account);
     }
 }

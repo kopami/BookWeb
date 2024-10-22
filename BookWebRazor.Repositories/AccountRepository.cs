@@ -12,5 +12,7 @@ namespace BookWebRazor.Repositories
     public class AccountRepository : IAccountRepository
     {
         public Account? GetAccount(string email) => AccountDAO.Instance.Get(u => u.Email == email);
+
+        public bool AddAccount(Account account) => AccountDAO.Instance.Add(account);
     }
 }

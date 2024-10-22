@@ -1,4 +1,75 @@
 ﻿@page
 @model BookWebRazor.Pages.Account.RegisterModel
 @{
+    ViewData["Title"] = "Register";
 }
+
+<h1 class="d-flex justify-content-center align-items-center">@ViewData["Title"]</h1>
+
+
+<div class="container d-flex justify-content-center align-items-center min-vh-30 mb-3">
+    <div class="row border rounded-3 p-3 bg-white shadow" style="width: 930px">
+        <div class="col-md-6 rounded-3 d-flex justify-content-center align-items-center flex-column ">
+            <div class="featured-image">
+                <img src="~/images/background.jpg" class="img-fluid" style="width:100%" alt="" />
+            </div>
+        </div>
+
+        <div class="col-md-6" style="padding: 40px 30px 40px 40px">
+            <div class="row align-items-center">
+                <div class="justify-content-center align-items-center">
+                    <h4 class="text-nowrap">Welcome to Our Book Store</h4>
+                    <h4 class="text-nowrap">Register new account</h4>
+                </div>
+
+
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <hr />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input asp-for="Input.Email" class="form-control form-control-lg bg-light fs-6" autocomplete="email" aria-required="true" />
+                            <label asp-for="Input.Email" class="form-label">
+                                @Html.DisplayNameFor(model => model.Input.Email) <span class="text-danger">*</span>
+                            </label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input asp-for="Input.Password" class="form-control form-control-lg bg-light fs-6" autocomplete="new-password" aria-required="true" />
+                            <label asp-for="Input.Password" class="form-label">
+                                @Html.DisplayNameFor(model => model.Input.Password) <span class="text-danger">*</span>
+                            </label>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input asp-for="Input.Name" class="form-control form-control-lg bg-light fs-6" aria-required="true" />
+                            <label asp-for="Input.Name"></label>
+                            <span asp-validation-for="Input.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary fs-6">Register</button>
+
+                    </div>
+
+                </form>
+                @if (!User.IsInRole(RoleEnum.Admin.ToString()))
+                {
+                    <div class="row">
+                        <small>Already have an account? <a asp-page="./Login">Login</a></small>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
