@@ -11,13 +11,13 @@ namespace BookWebRazor.DAOs
 {
     public class BaseDAO<T> where T : class
     {
-        private readonly ApplicationDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        protected ApplicationDbContext? _context;
+        internal DbSet<T>? _dbSet;
 
-        public BaseDAO()
+        public BaseDAO(ApplicationDbContext context)
         {
-            _context = new ApplicationDbContext();
-            _dbSet = _context.Set<T>();
+            _context = context;
+            _dbSet = context.Set<T>();
         }
 
         public bool Add(T entity)

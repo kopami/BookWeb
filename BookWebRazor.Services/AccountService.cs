@@ -18,6 +18,25 @@ namespace BookWebRazor.Services
             _repo = repo;
         }
 
-        public Account? GetAccount(string username, string password) => _repo.GetAccount(username, password);
+        public Account? Login(string email, string password, out string message)
+        {
+            var account =  _repo.GetAccount(email);
+
+            if (account == null)
+            {
+                message = "Email not found";
+            }
+            else if (account.Password != password)
+            {
+                message = "Password is incorrect";
+            }
+            else
+            {
+                message = "Login success";
+                return account;
+            }
+
+            return null;
+        }
     }
 }

@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWebRazor.DAOs", "BookWe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWebRazor.Repositories", "BookWebRazor.Repositories\BookWebRazor.Repositories.csproj", "{FB44CBD5-6F24-4F5B-9A31-5E15D663A623}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWebRazor.Services", "BookWebRazor.Services\BookWebRazor.Services.csproj", "{21DF7D6A-348F-4EFC-9C88-0084B0CA6C82}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{FB44CBD5-6F24-4F5B-9A31-5E15D663A623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB44CBD5-6F24-4F5B-9A31-5E15D663A623}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB44CBD5-6F24-4F5B-9A31-5E15D663A623}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21DF7D6A-348F-4EFC-9C88-0084B0CA6C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21DF7D6A-348F-4EFC-9C88-0084B0CA6C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21DF7D6A-348F-4EFC-9C88-0084B0CA6C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21DF7D6A-348F-4EFC-9C88-0084B0CA6C82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

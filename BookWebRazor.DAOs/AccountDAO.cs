@@ -14,10 +14,10 @@ namespace BookWebRazor.DAOs
 
         public static AccountDAO Instance
         {
-            get => _instance ?? new AccountDAO();            
+            get => _instance ?? new AccountDAO(new ApplicationDbContext());
         }
 
-        public AccountDAO() : base()
+        public AccountDAO(ApplicationDbContext context) : base(context)
         {
         }
     }
