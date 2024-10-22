@@ -32,8 +32,7 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(
-    options => options
-                .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty));
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty));
 
 #region Add Services
 

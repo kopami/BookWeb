@@ -18,6 +18,12 @@ namespace BookWebRazor.Services
             _categoryRepository = categoryRepository;
         }
 
+        public bool Add(Category category) => _categoryRepository.Add(category);
+
         public IEnumerable<Category> GetAll() => _categoryRepository.GetAll();
+
+        public Category? GetById(int? id) => id == null ? null : _categoryRepository.Get(c => c.Id == id);
+
+        public bool Update(Category category) => _categoryRepository.Update(category);
     }
 }

@@ -1,38 +1,47 @@
-using BookWebRazor.BusinessObjects.Enum;
 using BookWebRazor.BusinessObjects.Model;
 using BookWebRazor.Services.Interface;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BookWebRazor.Pages.CategoryPage
 {
-    [Authorize(Roles = nameof(RoleEnum.Admin))]
-    public class CreateModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly ICategoryService _categoryService;
         [BindProperty]
         public Category Category { get; set; } = new Category();
 
-        public CreateModel(ICategoryService categoryService)
+        public EditModel(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
-        public void OnGet()
+        public IActionResult OnGet(int? id)
         {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            Category? category = _categoryService.GetById(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            Category = category;
+            return Page();
         }
 
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
-                if (_categoryService.Add(Category))
+                bool isSuccess = _categoryService.Update(Category);
+                if (isSuccess)
                 {
-                    TempData["success"] = "Category created successfully";
+                    TempData["success"] = "Category updated successfully";
                     return Redirect(Url.Content("~/category"));
                 }
             }
-
             return Page();
         }
     }
