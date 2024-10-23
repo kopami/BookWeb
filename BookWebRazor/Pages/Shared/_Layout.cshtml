@@ -14,6 +14,26 @@
     @* Toastr *@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
+    @* DataTable *@
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+
+    <style>
+        /* On hover and focus, change to solid white and underline */
+        .navbar-nav .dropdown-toggle:hover,
+        .navbar-nav .dropdown-toggle:focus {
+            color: #ffffff !important; /* Solid white */
+        }
+
+        .title-two-rows {
+            white-space: normal; /* Ensures wrapping */
+            display: block; /* Ensure it behaves as a block element */
+            overflow: hidden; /* Hide any overflow content */
+            text-overflow: ellipsis; /* Add ellipsis for overflow (if needed) */
+            line-height: 1.2; /* Adjust line height for spacing */
+            height: 2.4em; /* Set height for 2 lines based on line-height */
+            max-width: 100%; /* Ensures it takes the full width of container */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -29,11 +49,27 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link" asp-page="/Privacy">Privacy</a>
                         </li>
+                        @if (User.IsInRole(RoleEnum.Admin.ToString()))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white-50" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                    Content Management
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item " asp-page="/CategoryPage/Index">Category</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item " asp-page="/product/index">Product</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                     </ul>
 
                     <partial name="_LoginPartial" />
@@ -57,6 +93,11 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tiny.cloud/1/z5cm19c6b8uqptz3g7dbzagxo2qwa5c1u1ijlbwsafhusc4k/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

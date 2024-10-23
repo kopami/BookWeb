@@ -18,12 +18,7 @@ namespace BookWebRazor.Repositories
 
         public bool AddRange(IEnumerable<T> entities) => _dao.AddRange(entities);
 
-        public bool Delete(int id)
-        {
-            var entity = _dao.Get(x => x.Id == id);
-            if (entity == null) return false;
-            return _dao.Delete(entity);
-        }
+        public bool Delete(T entity) => _dao.Delete(entity);
 
         public T? Get(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = false)
         {

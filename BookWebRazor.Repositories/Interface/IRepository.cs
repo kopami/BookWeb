@@ -15,6 +15,6 @@ namespace BookWebRazor.Repositories.Interface
         bool Add(T entity);
         bool AddRange(IEnumerable<T> entities);
         bool Update(T entity);
-        bool Delete(int id);
+        bool Delete(T entity);
     }
 }

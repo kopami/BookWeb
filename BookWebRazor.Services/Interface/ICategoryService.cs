@@ -13,5 +13,6 @@ namespace BookWebRazor.Services.Interface
         bool Add(Category category);
         Category? GetById(int? id);
         bool Update(Category category);
+        bool Delete(Category category);
     }
 }

@@ -20,6 +20,8 @@ namespace BookWebRazor.Services
 
         public bool Add(Category category) => _categoryRepository.Add(category);
 
+        public bool Delete(Category category) => _categoryRepository.Delete(category);
+
         public IEnumerable<Category> GetAll() => _categoryRepository.GetAll();
 
         public Category? GetById(int? id) => id == null ? null : _categoryRepository.Get(c => c.Id == id);
