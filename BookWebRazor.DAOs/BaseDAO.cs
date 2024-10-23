@@ -139,5 +139,7 @@ namespace BookWebRazor.DAOs
             }
             return query.ToList();
         }
+
+        public int Count(Expression<Func<T, bool>> filter) => _dbSet.Count(filter);
     }
 }

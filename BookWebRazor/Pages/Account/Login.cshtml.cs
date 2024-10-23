@@ -61,6 +61,7 @@ namespace BookWebRazor.Pages.Account
                 // Create claims (you can add more if needed, like role, name, etc.)
                 var claims = new List<Claim>
                 {
+                    new Claim(ClaimTypes.NameIdentifier, account.Id.ToString()),
                     new Claim(ClaimTypes.Name, account.Email),
                     new Claim(ClaimTypes.Role, account.Role) // If you have roles
                 };

@@ -64,6 +64,7 @@ namespace BookWebRazor.Pages.Account
                 // Automatically log the user in after registration
                 var claims = new List<Claim>
                 {
+                    new Claim(ClaimTypes.NameIdentifier, account.Id.ToString()),
                     new Claim(ClaimTypes.Name, account.Email),
                     new Claim(ClaimTypes.Role, account.Role)
                 };

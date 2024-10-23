@@ -16,5 +16,6 @@ namespace BookWebRazor.Repositories.Interface
         bool AddRange(IEnumerable<T> entities);
         bool Update(T entity);
         bool Delete(T entity);
+        int Count(Expression<Func<T, bool>> filter);
     }
 }
