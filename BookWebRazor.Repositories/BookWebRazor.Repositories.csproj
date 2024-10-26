@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookWebRazor.DAOs\BookWebRazor.DAOs.csproj" />
+    <ProjectReference Include="..\BookWebRazor.DAOs\BookWebRazor.DAOs.csproj">
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

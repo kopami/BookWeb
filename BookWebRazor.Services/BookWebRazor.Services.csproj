@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookWebRazor.Repositories\BookWebRazor.Repositories.csproj" />
+    <ProjectReference Include="..\BookWebRazor.Repositories\BookWebRazor.Repositories.csproj">
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

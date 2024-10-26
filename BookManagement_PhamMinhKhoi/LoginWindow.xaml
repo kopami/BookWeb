@@ -1,0 +1,21 @@
+﻿<Window x:Class="BookManagement_PhamMinhKhoi.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookManagement_PhamMinhKhoi"
+        mc:Ignorable="d"
+        Title="Login to the System" Height="450" Width="800"
+        Background="Bisque" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="290" Margin="155,0,0,0" Stroke="Black" VerticalAlignment="Center" Width="510" Fill="AliceBlue" RadiusX="5" RadiusY="5"/>
+
+        <Label Content="Login" HorizontalAlignment="Center" Margin="0,72,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=HeaderLabelStyle}"/>
+        <Label Content="Emai" Margin="269,132,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.446,0.692"/>
+        <Label Content="Password" Margin="269,210,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.538,-0.409"/>
+        <Button Content="Login" x:Name="LoginBtn" Margin="275,314,0,0" VerticalAlignment="Top" Click="LoginBtn_Click"/>
+        <Button Content="Quit" x:Name="QuitBtn" Margin="432,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.423,0.162" Click="QuitBtn_Click"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="275,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" RenderTransformOrigin="0.502,1.661"/>
+        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="275,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257"/>
+    </Grid>
+</Window>

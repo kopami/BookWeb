@@ -1,4 +1,5 @@
 ﻿using BookWebRazor.BusinessObjects.Model;
+using BookWebRazor.Repositories;
 using BookWebRazor.Repositories.Interface;
 using BookWebRazor.Services.Interface;
 using Microsoft.AspNetCore.Http;
@@ -14,18 +15,27 @@ namespace BookWebRazor.Services
     {
         private readonly IProductRepository _productRepository;
 
+        public ProductService()
+        {
+            _productRepository = new ProductRepository();
+        }
+
         public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
 
-        public bool CreateProduct(Product product, List<IFormFile>? files, string? rootPath)
+        public bool CreateProduct(Product product, List<IFormFile>? files = null, string? rootPath = null)
         {
             bool isSuccess = _productRepository.Add(product);
             if (isSuccess && files != null && rootPath != null)
             {
                 HandleUploadFile(product, files, rootPath);
                 _productRepository.Update(product);
+                return true;
+            }
+            if (isSuccess)
+            {
                 return true;
             }
             return false;
@@ -46,13 +56,17 @@ namespace BookWebRazor.Services
             return _productRepository.GetAll(includeProperties: includeProperties);
         }
 
-        public bool UpdateProduct(Product product, List<IFormFile>? files, string? rootPath)
+        public bool UpdateProduct(Product product, List<IFormFile>? files = null, string? rootPath = null)
         {
             bool isSuccess = _productRepository.Update(product);
             if (isSuccess && files != null && rootPath != null)
             {
                 HandleUploadFile(product, files, rootPath);
                 _productRepository.Update(product);
+                return true;
+            }
+            if (isSuccess)
+            {
                 return true;
             }
             return false;

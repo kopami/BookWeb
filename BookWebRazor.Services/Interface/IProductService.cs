@@ -12,8 +12,8 @@ namespace BookWebRazor.Services.Interface
     {
         IEnumerable<Product> GetProducts(string? includeProperties = null);
         Product? GetProductById(int id, string? includeProperties = null);
-        bool CreateProduct(Product product, List<IFormFile>? files, string? rootPath);
-        bool UpdateProduct(Product product, List<IFormFile>? files, string? rootPath);
+        bool CreateProduct(Product product, List<IFormFile>? files = null, string? rootPath = null);
+        bool UpdateProduct(Product product, List<IFormFile>? files = null, string? rootPath = null);
         bool DeleteProduct(Product productToBeDeleted);
     }
 }

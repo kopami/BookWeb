@@ -14,7 +14,7 @@ namespace BookWebRazor.Pages.Product
         private readonly IShoppingCartService _shoppingCartService;
 
         [BindProperty]
-        public ShoppingCart Cart { get; set; } = new ShoppingCart();
+        public BusinessObjects.Model.ShoppingCart Cart { get; set; } = new ();
 
         public DetailModel(IProductService productService, IShoppingCartService shoppingCartService)
         {
@@ -46,7 +46,7 @@ namespace BookWebRazor.Pages.Product
 
             TempData["success"] = "Cart updated successfully";
 
-            return RedirectToPage("Index");
+            return RedirectToPage("/Index");
         }
     }
 }

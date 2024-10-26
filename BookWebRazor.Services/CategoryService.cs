@@ -1,4 +1,5 @@
 ﻿using BookWebRazor.BusinessObjects.Model;
+using BookWebRazor.Repositories;
 using BookWebRazor.Repositories.Interface;
 using BookWebRazor.Services.Interface;
 using System;
@@ -13,6 +14,10 @@ namespace BookWebRazor.Services
     {
         private readonly ICategoryRepository _categoryRepository;
 
+        public CategoryService()
+        {
+            _categoryRepository = new CategoryRepository();
+        }
         public CategoryService(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;

@@ -12,5 +12,9 @@ namespace BookWebRazor.Services.Interface
     { 
         void AddToCart(ShoppingCart cart);
         int Count(Expression<Func<ShoppingCart, bool>> filter);
+        IEnumerable<ShoppingCart> GetAll(string accountId, string? includeProperties = null);
+        ShoppingCart? Get(Expression<Func<ShoppingCart, bool>> filter, string? includeProperties = null);
+        bool Update(ShoppingCart cart);
+        bool Remove(ShoppingCart cartFromDb);
     }
 }

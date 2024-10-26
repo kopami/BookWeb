@@ -11,5 +11,6 @@ namespace BookWebRazor.Services.Interface
     {
         int Remove(int id, string webRootPath);
         IEnumerable<ProductImage> GetProductImages(int productId);
+        IEnumerable<ProductImage> GetAll();
     }
 }

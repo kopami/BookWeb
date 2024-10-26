@@ -46,5 +46,23 @@ namespace BookWebRazor.Services
         {
             return _shoppingCartRepository.Count(filter);
         }
+
+        public ShoppingCart? Get(Expression<Func<ShoppingCart, bool>> filter, string? includeProperties = null)
+        {
+            return _shoppingCartRepository.Get(filter, includeProperties);
+        }
+
+        public IEnumerable<ShoppingCart> GetAll(string accountId, string? includeProperties = null)
+        {
+            if (int.TryParse(accountId, out int accountIdInt))
+            {
+                return _shoppingCartRepository.GetAll(u => u.AccountId == accountIdInt, includeProperties);
+            }
+            return new List<ShoppingCart>();
+        }
+
+        public bool Remove(ShoppingCart cartFromDb) => _shoppingCartRepository.Delete(cartFromDb);
+
+        public bool Update(ShoppingCart cart) => _shoppingCartRepository.Update(cart);
     }
 }

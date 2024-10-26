@@ -23,8 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookWebRazor.BusinessObjects\BookWebRazor.BusinessObjects.csproj" />
-    <ProjectReference Include="..\BookWebRazor.Services\BookWebRazor.Services.csproj" />
+    <ProjectReference Include="..\BookWebRazor.BusinessObjects\BookWebRazor.BusinessObjects.csproj">
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\BookWebRazor.Services\BookWebRazor.Services.csproj">
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

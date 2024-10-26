@@ -1,0 +1,40 @@
+﻿<Window x:Class="BookManagement_PhamMinhKhoi.DetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookManagement_PhamMinhKhoi"
+        mc:Ignorable="d"
+        Title="Book Detail" Height="800" Width="800"
+        Background="Bisque" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="674" Margin="28,78,0,0" Stroke="Black" VerticalAlignment="Top" Width="540" RadiusY="10" RadiusX="10" Fill="AliceBlue"/>
+
+        <Label x:Name="lblHeader" Content="Create / Update Product" Margin="51,10,0,0" VerticalAlignment="Top" Style="{StaticResource HeaderLabelStyle}"/>
+        <Label Content="Id" Margin="51,110,0,0" VerticalAlignment="Top"/>
+        <Label Content="Title" Margin="51,152,0,0" VerticalAlignment="Top"/>
+        <Label Content="Description" Margin="51,201,0,0" VerticalAlignment="Top"/>
+        <Label Content="ISBN" Margin="49,352,0,0" VerticalAlignment="Top"/>
+        <Label Content="Author" Margin="49,406,0,0" VerticalAlignment="Top"/>
+        <Label Content="Price" Margin="51,630,0,0" VerticalAlignment="Top"/>
+        <Label Content="List Price" Margin="49,459,0,0" VerticalAlignment="Top"/>
+        <Label Content="List Price 50" Margin="51,520,0,0" VerticalAlignment="Top"/>
+        <Label Content="List Price 100" Margin="51,574,0,0" VerticalAlignment="Top"/>
+        <Label Content="Category" Margin="49,683,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtId" Margin="223,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293" IsEnabled="False"/>
+        <TextBox x:Name="txtTitle" Margin="223,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+
+        <TextBox x:Name="txtDescription" Margin="223,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293" VerticalScrollBarVisibility="Auto" Height="132"/>
+
+        <TextBox x:Name="txtISBN" Margin="223,357,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBox x:Name="txtAuthor" Margin="223,411,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBox x:Name="txtListPrice" Margin="223,464,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBox x:Name="txtListPrice50" Margin="223,525,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBox x:Name="txtListPrice100" Margin="223,579,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <TextBox x:Name="txtPrice" Margin="223,635,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293"/>
+        <ComboBox x:Name="cbCategory" Margin="223,690,284,0" VerticalAlignment="Top" Width="293"/>
+        <Button x:Name="btnSave" Content="Save" Margin="622,175,0,0" VerticalAlignment="Top" Click="btnSave_Click"/>
+        <Button x:Name="btnClose" Content="Close" Margin="622,235,0,0" VerticalAlignment="Top" Click="btnClose_Click"/>
+
+    </Grid>
+</Window>

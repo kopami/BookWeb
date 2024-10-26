@@ -19,9 +19,11 @@ namespace BookWebRazor.Services
             _productImageRepository = productImageRepository;
         }
 
+        public IEnumerable<ProductImage> GetAll() => _productImageRepository.GetAll();
+
         public IEnumerable<ProductImage> GetProductImages(int productId)
         {
-            throw new NotImplementedException();
+            return _productImageRepository.GetAll(image => image.ProductId == productId);
         }
 
         public int Remove(int id, string webRootPath)

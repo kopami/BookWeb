@@ -1,5 +1,6 @@
 ﻿using BookWebRazor.BusinessObjects.Enum;
 using BookWebRazor.BusinessObjects.Model;
+using BookWebRazor.Repositories;
 using BookWebRazor.Repositories.Interface;
 using BookWebRazor.Services.Interface;
 using Microsoft.AspNetCore.Authentication;
@@ -18,6 +19,10 @@ namespace BookWebRazor.Services
     {
         private readonly IAccountRepository _accountRepository;
 
+        public AccountService()
+        {
+            _accountRepository = new AccountRepository();
+        }
         public AccountService(IAccountRepository accountRepository)
         {
             _accountRepository = accountRepository;
