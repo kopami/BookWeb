@@ -22,11 +22,13 @@ namespace BookManagement_PhamMinhKhoi
     public partial class MainWindow : Window
     {
         private readonly IProductService _productService;
+        private readonly IProductImageService _productImageService;
         private Product? _selected;
         public MainWindow()
         {
             InitializeComponent();
             _productService = new ProductService();
+            _productImageService = new ProductImageService();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -73,6 +75,7 @@ namespace BookManagement_PhamMinhKhoi
                     //đẩy selectedBook vào form detail để hiển thị
                     DetailWindow detailForm = new();
                     detailForm.EditedProduct = _productService.GetProductById(_selected.Id, includeProperties: "Category");
+                    detailForm.EditedProduct.ProductImages = _productImageService.GetProductImages(_selected.Id).ToList();
                     detailForm.ShowDialog();
                     FillDataGrid();
                 }
@@ -114,6 +117,13 @@ namespace BookManagement_PhamMinhKhoi
             {
                 Application.Current.Shutdown();
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CategoryManagementWindow categoryManagementWindow = new();
+            categoryManagementWindow.ShowDialog();
+            FillDataGrid();
         }
     }
 }

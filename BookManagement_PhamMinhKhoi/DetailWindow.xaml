@@ -35,6 +35,10 @@
         <ComboBox x:Name="cbCategory" Margin="223,690,284,0" VerticalAlignment="Top" Width="293"/>
         <Button x:Name="btnSave" Content="Save" Margin="622,175,0,0" VerticalAlignment="Top" Click="btnSave_Click"/>
         <Button x:Name="btnClose" Content="Close" Margin="622,235,0,0" VerticalAlignment="Top" Click="btnClose_Click"/>
+        <Border BorderBrush="Black" BorderThickness="5" CornerRadius="10" Padding="5">
+            <!-- Điều khiển Image để hiển thị hình ảnh -->
+            <Image x:Name="ImgBook" Width="200" Stretch="Uniform" Margin="572,379,8,93" />
+        </Border>
 
     </Grid>
 </Window>

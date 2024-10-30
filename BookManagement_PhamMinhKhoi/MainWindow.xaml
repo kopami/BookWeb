@@ -29,7 +29,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                
+
                 <DataGridTextColumn Header="ISBN" Width="100" Binding="{Binding ISBN}"/>
                 <DataGridTextColumn Header="Author" Width="80" Binding="{Binding Author}"/>
                 <DataGridTextColumn Header="Price" Width="50" Binding="{Binding Price}"/>
@@ -42,12 +42,13 @@
         <Label Content="Author" Margin="315,74,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtTitleSearch" Margin="109,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" RenderTransformOrigin="0.517,-0.313"/>
         <TextBox x:Name="txtAuthorSearch" Margin="396,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="157"/>
-        <Button x:Name="btnSearch" Content="Search" Margin="646,79,0,0" VerticalAlignment="Top" Click="btnSearch_Click"/>
-        <Button x:Name="btnCreate" Content="Create" Margin="838,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.75,0.474" Click="btnCreate_Click"/>
-        <Button x:Name="btnUpdate" Content="Update" Margin="838,263,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.504,1.102" Click="btnUpdate_Click"/>
-        <Button x:Name="btnDelete" Content="Delete" Margin="838,319,0,0" VerticalAlignment="Top" Click="btnDelete_Click"/>
-        <Button x:Name="btnQuit" Content="Quit" Margin="838,380,0,0" VerticalAlignment="Top" Click="btnQuit_Click"/>
+        <Button x:Name="btnSearch" Content="Search" Margin="623,78,0,0" VerticalAlignment="Top" Click="btnSearch_Click"/>
+        <Button x:Name="btnCreate" Content="Create" Margin="838,256,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.75,0.474" Click="btnCreate_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" Margin="838,312,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.504,1.102" Click="btnUpdate_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" Margin="838,368,0,0" VerticalAlignment="Top" Click="btnDelete_Click"/>
+        <Button x:Name="btnQuit" Content="Quit" Margin="838,429,0,0" VerticalAlignment="Top" Click="btnQuit_Click"/>
         <Label Content="Hello, Admin" Margin="838,23,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="BtnManageCategory" Content="Manage Category" Margin="785,74,0,0" VerticalAlignment="Top" Width="186" Click="Button_Click" Height="37"/>
 
     </Grid>
 </Window>

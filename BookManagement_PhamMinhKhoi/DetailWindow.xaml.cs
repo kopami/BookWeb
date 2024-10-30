@@ -4,6 +4,7 @@ using BookWebRazor.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BookManagement_PhamMinhKhoi
 {
@@ -158,6 +160,39 @@ namespace BookManagement_PhamMinhKhoi
                 txtListPrice100.Text = EditedProduct.Price100.ToString();
                 txtPrice.Text = EditedProduct.Price.ToString();
                 cbCategory.SelectedValue = EditedProduct.CategoryId;
+                try
+                {
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+
+                    // Build the full path
+                    string imagePath = EditedProduct.ProductImages?.FirstOrDefault()?.ImageUrl;
+                    string defaultRootPath = "D:\\Bi\\FPT\\Sem7\\PRN221\\BookWebRazor\\BookWebRazor\\wwwroot";
+
+                    if (!string.IsNullOrEmpty(imagePath))
+                    {
+                        bitmap.UriSource = new Uri(defaultRootPath + imagePath, UriKind.Absolute);
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException("Image path is null or empty.");
+                    }
+
+                    bitmap.EndInit();
+
+                    // Set the image for the Image control
+                    ImgBook.Source = bitmap;
+                }
+                catch (FileNotFoundException ex)
+                {
+                    MessageBox.Show("The specified image file was not found: " + ex.Message);
+                    // You may want to set a default image here
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while loading the image: " + ex.Message);
+                    // Optionally, set a fallback image here
+                }
             }
             else
             {

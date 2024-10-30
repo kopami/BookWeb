@@ -1,4 +1,5 @@
 ﻿using BookWebRazor.BusinessObjects.Model;
+using BookWebRazor.Repositories;
 using BookWebRazor.Repositories.Interface;
 using BookWebRazor.Services.Interface;
 using System;
@@ -14,6 +15,10 @@ namespace BookWebRazor.Services
     {
         private readonly IProductImageRepository _productImageRepository;
 
+        public ProductImageService()
+        {
+            _productImageRepository = new ProductImageRepository();
+        }
         public ProductImageService(IProductImageRepository productImageRepository)
         {
             _productImageRepository = productImageRepository;
